@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.server.coRouter
 
 @Configuration
-class TestRouter {
+class TestRouter(val testHandler: TestHandler) {
 
     @Bean
     fun testRouter() = coRouter {
-        POST("/test")
+        POST("/test", testHandler::testHandler)
     }
 }
